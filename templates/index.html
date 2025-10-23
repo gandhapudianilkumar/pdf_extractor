@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber PDF to Excel Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚗 Uber Statement Converter</h1>
+            <p class="subtitle">Convert your Uber PDF statements to Excel in seconds</p>
+        </div>
+
+        <div class="upload-section">
+            <div class="upload-box" id="uploadBox">
+                <div class="upload-icon">📄</div>
+                <h3>Upload Your Uber PDF Statement</h3>
+                <p>Drag & drop your PDF here or click to browse</p>
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <button class="browse-btn" onclick="document.getElementById('fileInput').click()">
+                    Browse Files
+                </button>
+            </div>
+
+            <div id="fileInfo" class="file-info" style="display: none;">
+                <div class="file-details">
+                    <span class="file-icon">📋</span>
+                    <span id="fileName"></span>
+                    <span id="fileSize"></span>
+                </div>
+                <button class="remove-btn" onclick="removeFile()">✕</button>
+            </div>
+
+            <button id="convertBtn" class="convert-btn" style="display: none;" onclick="convertFile()">
+                Convert to Excel
+            </button>
+
+            <div id="progressSection" class="progress-section" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">Processing your file...</p>
+            </div>
+
+            <div id="resultSection" class="result-section" style="display: none;">
+                <div class="success-message">
+                    <div class="success-icon">✅</div>
+                    <h3>Conversion Successful!</h3>
+                    <p id="resultMessage"></p>
+                </div>
+                <button class="convert-another-btn" onclick="resetForm()">
+                    Convert Another File
+                </button>
+            </div>
+
+            <div id="errorSection" class="error-section" style="display: none;">
+                <div class="error-message">
+                    <div class="error-icon">❌</div>
+                    <h3>Conversion Failed</h3>
+                    <p id="errorMessage"></p>
+                </div>
+                <button class="try-again-btn" onclick="resetForm()">
+                    Try Again
+                </button>
+            </div>
+        </div>
+
+        <div class="features">
+            <h2>Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Complete Data</h3>
+                    <p>Extracts all transactions with full multi-line descriptions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔢</div>
+                    <h3>Clean Numbers</h3>
+                    <p>Financial values without currency symbols, ready for analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Fast Processing</h3>
+                    <p>Convert your statements in seconds</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Formatted Excel</h3>
+                    <p>Professional formatting with headers and proper alignment</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Your files are processed securely and not stored on our servers</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
